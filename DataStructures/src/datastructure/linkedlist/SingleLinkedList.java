@@ -32,6 +32,34 @@ public class SingleLinkedList {
         }
         tail = new_node;
     }
+    void insertAtFirst(int n) {
+
+        Node new_node = new Node(n);
+
+        if(head != null) {
+
+            new_node.next = head;
+        }
+        else {
+
+            tail = new_node;
+        }
+        head = new_node;
+    }
+
+    Node findMiddleElement() {
+
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null) {
+
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
 
     void display() {
 
@@ -86,6 +114,29 @@ public class SingleLinkedList {
                     break;
 
                 case 2:
+                    System.out.println("Enter elements to be inserted at first:");
+                    while(sc.hasNextLine()) {
+
+                        String input = sc.nextLine();
+
+                        if(input.isEmpty())
+                            break;
+
+                        try {
+                            insertAtFirst(Integer.parseInt(input));
+                        }
+                        catch (Exception e){
+                            break;
+                        }
+                    }
+                    break;
+
+                case 3:
+                    Node mid_node = findMiddleElement();
+                    System.out.println("Middle element of the list: " + (mid_node != null ? mid_node.data : "null" ));
+                    break;
+
+                case 4:
                     display();
                     break;
 

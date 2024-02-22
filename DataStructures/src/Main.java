@@ -1,6 +1,8 @@
 import datastructure.linkedlist.SingleLinkedList;
+import datastructure.stack.Stack;
 
 import java.util.Scanner;
+
 
 public class Main {
 
@@ -15,6 +17,7 @@ public class Main {
 
             System.out.println("Select Data Structure:");
             System.out.println("[1] Singly Linked List");
+            System.out.println("[2] Stack");
             System.out.println("[0] Exit");
 
             int choice = sc.nextInt();
@@ -24,6 +27,11 @@ public class Main {
                 case 1:
                     SingleLinkedList sl = new SingleLinkedList();
                     sl.singleLinkedList();
+                    break;
+
+                case 2:
+                    Stack st = new Stack();
+                    st.stack();
                     break;
 
                 case 0:
