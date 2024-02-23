@@ -1,7 +1,5 @@
 package datastructure.linkedlist;
 
-import datastructure.stack.Stack;
-
 import java.util.Scanner;
 
 public class SingleLinkedList {
@@ -24,25 +22,24 @@ public class SingleLinkedList {
 
         Node new_node = new Node(n);
 
-        if(head != null) {
+        if (head != null) {
 
             tail.next = new_node;
-        }
-        else {
+        } else {
 
             head = new_node;
         }
         tail = new_node;
     }
+
     void insertAtFirst(int n) {
 
         Node new_node = new Node(n);
 
-        if(head != null) {
+        if (head != null) {
 
             new_node.next = head;
-        }
-        else {
+        } else {
 
             tail = new_node;
         }
@@ -52,21 +49,18 @@ public class SingleLinkedList {
     void insertAtPosition(int position, int data) {
 
         Node current = head;
-        Node prev = null;
 
-        if(size() + 1 < position || position <= 0) {
+        if (size() + 1 < position || position <= 0) {
 
             System.out.println("Invalid position");
-        }
-        else {
+        } else {
 
-            if(position == 1) {
+            if (position == 1) {
 
                 insertAtFirst(data);
-            }
-            else {
+            } else {
 
-                for(int i=0; i < position-2; i++) {
+                for (int i = 0; i < position - 2; i++) {
 
                     current = current.next;
                 }
@@ -86,7 +80,7 @@ public class SingleLinkedList {
 
         Node current = head;
 
-        while(current != null) {
+        while (current != null) {
 
             ++len;
             current = current.next;
@@ -100,7 +94,7 @@ public class SingleLinkedList {
         Node slow = head;
         Node fast = head;
 
-        while(fast != null && fast.next != null) {
+        while (fast != null && fast.next != null) {
 
             slow = slow.next;
             fast = fast.next.next;
@@ -113,7 +107,7 @@ public class SingleLinkedList {
 
         Node current = head;
 
-        while(current != null) {
+        while (current != null) {
 
             System.out.print(current.data + " ");
             current = current.next;
@@ -127,7 +121,7 @@ public class SingleLinkedList {
 
         boolean isContinue = true;
 
-        while(isContinue) {
+        while (isContinue) {
 
             System.out.println("Choose what to do:");
             System.out.println("[1] Insert elements");
@@ -144,17 +138,16 @@ public class SingleLinkedList {
 
                 case 1:
                     System.out.println("Enter elements to be inserted:");
-                    while(sc.hasNextLine()) {
+                    while (sc.hasNextLine()) {
 
                         String input = sc.nextLine();
 
-                        if(input.isEmpty())
+                        if (input.isEmpty())
                             break;
 
                         try {
                             insertElements(Integer.parseInt(input));
-                        }
-                        catch (Exception e){
+                        } catch (Exception e) {
                             break;
                         }
                     }
@@ -162,17 +155,16 @@ public class SingleLinkedList {
 
                 case 2:
                     System.out.println("Enter elements to be inserted at first:");
-                    while(sc.hasNextLine()) {
+                    while (sc.hasNextLine()) {
 
                         String input = sc.nextLine();
 
-                        if(input.isEmpty())
+                        if (input.isEmpty())
                             break;
 
                         try {
                             insertAtFirst(Integer.parseInt(input));
-                        }
-                        catch (Exception e){
+                        } catch (Exception e) {
                             break;
                         }
                     }
@@ -186,8 +178,7 @@ public class SingleLinkedList {
                         int data = sc.nextInt(), position = sc.nextInt();
                         insertAtPosition(position, data);
                         sc.nextLine();
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         break;
                     }
                     break;
@@ -195,7 +186,7 @@ public class SingleLinkedList {
 
                 case 4:
                     Node mid_node = findMiddleElement();
-                    System.out.println("Middle element of the list: " + (mid_node != null ? mid_node.data : "null" ));
+                    System.out.println("Middle element of the list: " + (mid_node != null ? mid_node.data : "null"));
                     break;
 
                 case 5:
@@ -217,13 +208,12 @@ public class SingleLinkedList {
             try {
 
                 con = sc.nextLine();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
 
                 continue;
             }
 
-            if(!con.equalsIgnoreCase("y")) {
+            if (!con.equalsIgnoreCase("y")) {
 
                 isContinue = false;
             }
