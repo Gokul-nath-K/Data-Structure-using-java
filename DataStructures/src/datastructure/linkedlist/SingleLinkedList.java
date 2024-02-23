@@ -1,5 +1,7 @@
 package datastructure.linkedlist;
 
+import datastructure.stack.Stack;
+
 import java.util.Scanner;
 
 public class SingleLinkedList {
@@ -47,6 +49,52 @@ public class SingleLinkedList {
         head = new_node;
     }
 
+    void insertAtPosition(int position, int data) {
+
+        Node current = head;
+        Node prev = null;
+
+        if(size() + 1 < position || position <= 0) {
+
+            System.out.println("Invalid position");
+        }
+        else {
+
+            if(position == 1) {
+
+                insertAtFirst(data);
+            }
+            else {
+
+                for(int i=0; i < position-2; i++) {
+
+                    current = current.next;
+                }
+
+                Node new_node = new Node(data);
+
+                Node temp = current.next;
+                current.next = new_node;
+                new_node.next = temp;
+            }
+        }
+    }
+
+    int size() {
+
+        int len = 0;
+
+        Node current = head;
+
+        while(current != null) {
+
+            ++len;
+            current = current.next;
+        }
+
+        return len;
+    }
+
     Node findMiddleElement() {
 
         Node slow = head;
@@ -84,10 +132,9 @@ public class SingleLinkedList {
             System.out.println("Choose what to do:");
             System.out.println("[1] Insert elements");
             System.out.println("[2] Insert elements at first");
-            System.out.println("[3] Find middle element");
-            System.out.println("[4] Display elements");
-            System.out.println("[5] Delete elements");
-            System.out.println("[6] Delete list");
+            System.out.println("[3] Insert elements at position");
+            System.out.println("[4] Find middle element");
+            System.out.println("[5] Display elements");
             System.out.println("[0] Exit");
 
             int choice = sc.nextInt();
@@ -132,11 +179,26 @@ public class SingleLinkedList {
                     break;
 
                 case 3:
+
+                    System.out.println("Enter elements to be inserted and position:");
+                    try {
+
+                        int data = sc.nextInt(), position = sc.nextInt();
+                        insertAtPosition(position, data);
+                        sc.nextLine();
+                    }
+                    catch (Exception e){
+                        break;
+                    }
+                    break;
+
+
+                case 4:
                     Node mid_node = findMiddleElement();
                     System.out.println("Middle element of the list: " + (mid_node != null ? mid_node.data : "null" ));
                     break;
 
-                case 4:
+                case 5:
                     display();
                     break;
 
