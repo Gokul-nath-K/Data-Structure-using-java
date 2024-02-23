@@ -1,5 +1,6 @@
 import datastructure.linkedlist.SingleLinkedList;
 import datastructure.stack.Stack;
+import datastructure.tree.BinaryTree;
 
 import java.util.Scanner;
 
@@ -18,6 +19,7 @@ public class Main {
             System.out.println("Select Data Structure:");
             System.out.println("[1] Singly Linked List");
             System.out.println("[2] Stack");
+            System.out.println("[3] Binary tree");
             System.out.println("[0] Exit");
 
             int choice = sc.nextInt();
@@ -32,6 +34,11 @@ public class Main {
                 case 2:
                     Stack st = new Stack();
                     st.stack();
+                    break;
+
+                case 3:
+                    BinaryTree bt = new BinaryTree();
+                    bt.binaryTree();
                     break;
 
                 case 0:
